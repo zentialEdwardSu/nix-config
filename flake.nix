@@ -37,8 +37,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jdoe = import ./home.nix;
-
+            home-manager.users.edwardsu = import ./home-manager/home.nix;
+            home-manager.backupFIleExtension = "_bak";
+            home-manager.extraSpecialArgs = { inherit inputs system;};
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
