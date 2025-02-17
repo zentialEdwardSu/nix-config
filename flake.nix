@@ -39,7 +39,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.edwardsu = import ./home-manager/home.nix;
             home-manager.backupFIleExtension = "_bak";
-            home-manager.extraSpecialArgs = { inherit inputs system;};
+            home-manager.extraSpecialArgs = { inherit inputs; };
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
