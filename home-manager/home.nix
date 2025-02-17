@@ -54,6 +54,8 @@
     fastfetch
     zinit
     nixos-generators
+    git
+    gh
   ];
 
   programs.gh = {
