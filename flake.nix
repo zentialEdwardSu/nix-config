@@ -32,7 +32,7 @@
         # > Our main nixos configuration file <
         modules = [
           nixos-wsl.nixosModules.wsl
-          ./nixos/configuration.nix
+          ./home-manager/edwardsu.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -43,6 +43,7 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+          ./nixos/configuration.nix
           ];
       };
     };

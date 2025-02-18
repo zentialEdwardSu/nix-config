@@ -9,6 +9,7 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    ../common/zsh.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
@@ -52,10 +53,23 @@
     vim
     wget
     fastfetch
-    zinit
     nixos-generators
-    git
-    gh
+
+    # shell usage
+    thefuck
+
+    # dev
+    (python312.withPackages (python-pkgs: with python-pkgs; [
+      requests
+      typer
+    ]))
+    # for nix-ide
+    nil
+    nixpkgs-fmt
+    
+    gcc
+    gnumake
+    uv
   ];
 
   programs.gh = {

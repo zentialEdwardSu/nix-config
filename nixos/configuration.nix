@@ -9,7 +9,7 @@
 }: {
   # You can import other NixOS modules here
   imports = [
-    ../common/vscode.nix
+    # ../common/vscode.nix
     # If you want to use modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -46,6 +46,11 @@
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 7d";
+      dates = "weekly";
+    };
     settings = {
       # mirror
       substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
@@ -55,6 +60,8 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+      auto-optimise-store = true;
+      
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -75,18 +82,15 @@
     vim
     wget
   ];
+  
+  programs.zsh.enable = true;
 
-  users.users.edwardsu = {
-    isNormalUser = true;
-    home = "/home/edwardsu";
-    password = "wsledsu";
-    extraGroups = [ "wheel"];
-  };
+  programs.direnv.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
 
-  # nixpkgs.hostPlatform = "x86_64-linux";
-
-  vscode-remote-workaround.enable = true;
+  # for vscode
+  programs.nix-ld.enable = true;
+  # vscode-remote-workaround.enable = true;
 }
