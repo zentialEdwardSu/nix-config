@@ -3,7 +3,7 @@
   lib,
 }:
 stdenvNoCC.mkDerivation {
-  pname = "SimSun";
+  pname = "SimFamily";
   version = "0.1";
   src = ./.;
 
@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = with lib; {
-    description = "SimSun";
+    description = "SimFamily";
     homepage = "https://www.microsoft.com/zh-cn//";
     platforms = platforms.all;
   };
