@@ -6,7 +6,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  font-simsun = pkgs.callPackage ../packages/simsun { };
+in
+{
   # You can import other home-manager modules here
   imports = [
     ../common/zsh.nix
@@ -70,6 +73,10 @@
     gcc
     gnumake
     uv
+
+    # fonts
+    liberation_ttf
+    font-simsun
   ];
 
   programs.gh = {
