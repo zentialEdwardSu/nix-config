@@ -7,7 +7,7 @@
   pkgs,
   ...
 }: let
-  font-simsun = pkgs.callPackage ../packages/simsun { };
+  font-simfamily = pkgs.callPackage ../packages/simfamily { };
 in
 {
   # You can import other home-manager modules here
@@ -76,7 +76,7 @@ in
 
     # fonts
     liberation_ttf
-    font-simsun
+    font-simfamily
   ];
 
   programs.gh = {
