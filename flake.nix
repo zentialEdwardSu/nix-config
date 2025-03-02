@@ -5,6 +5,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # NUR
+    nur.url = "github:nix-community/NUR";
+
     # wsl
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +22,7 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
+    nur,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -32,6 +36,7 @@
         # > Our main nixos configuration file <
         modules = [
           nixos-wsl.nixosModules.wsl
+          nur.modules.nixos.default
           ./home-manager/edwardsu.nix
           home-manager.nixosModules.home-manager
           {
@@ -39,7 +44,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.edwardsu = import ./home-manager/home.nix;
             home-manager.backupFileExtension = "_bak";
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs outputs; };
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }

@@ -2,8 +2,6 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
-  lib,
-  config,
   pkgs,
   ...
 }: let
@@ -75,7 +73,7 @@ in
     uv
 
     # fonts
-    liberation_ttf
+    nur.repos.rewine.ttf-ms-win10
     font-simfamily
   ];
 
