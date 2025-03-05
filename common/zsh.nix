@@ -26,6 +26,8 @@
   };
 
   programs.starship = {
+    # nerd cheat sheet: https://www.nerdfonts.com/cheat-sheet
+    # starship config: https://starship.rs/config/
     enable = true;
     enableZshIntegration = true;
     settings = {
@@ -41,6 +43,7 @@
         "$git_status"
         "[](fg:color_aqua bg:color_blue)"
         "$c"
+        "$cmake"
         "$rust"
         "$golang"
         "$nodejs"
@@ -49,12 +52,14 @@
         "$kotlin"
         "$haskell"
         "$python"
+        "$typst"
         "[](fg:color_blue bg:color_bg3)"
         "$docker_context"
         "$conda"
+        "$direnv"
         "[](fg:color_bg3 bg:color_bg1)"
         "$time"
-        "[ ](fg:color_bg1)"
+        "[ ](fg:color_bg1)"
         "$line_break$character"
       ];
 
@@ -131,6 +136,17 @@
 
       git_status = {
         style = "bg:color_aqua";
+        conflicted = "  "; #fa-flag
+        ahead = "⇡$count";
+        diverged = "⇕⇡$ahead_count⇣$behind_count";
+        behind = "⇣$count";
+        up_to_date = "  "; #fa-check
+        untracked = " 🤷 ";
+        stashed = "  ";
+        modified = "  ";
+        staged = "[ \($count\) ](fg:color_fg0 bg:color_aqua)";
+        renamed = " R ";
+        deleted = " 🗑 ";
         format = "[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)";
       };
 
@@ -149,6 +165,23 @@
         vimcmd_replace_one_symbol = "[](bold fg:color_purple)";
         vimcmd_replace_symbol = "[](bold fg:color_purple)";
         vimcmd_visual_symbol = "[](bold fg:color_yellow)";
+      };
+
+      direnv = {
+        disabled = false;
+        style = "bg:color_bg3";
+        loaded_msg = ""; #nf-fa-upload
+        unloaded_msg = ""; #nf-fs-download
+        allowed_msg = ""; #nf-fa-check
+        not_allowed_msg = ""; #nf-fa-close
+        denied_msg = ""; #nf-fa-ban
+        symbol = ""; #nf-custom-folder_config
+        format = "[$symbol  $loaded / $allowed  ](fg:color_blue bg:color_bg3)($style)";
+      };
+
+      typst = {
+        disabled = false;
+        symbol = ""; #nf-linux-typst
       };
     };
   };
