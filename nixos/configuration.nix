@@ -52,8 +52,11 @@
       dates = "weekly";
     };
     settings = {
-      # mirror
-      substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+      # do not use mirror
+      substituters = [ 
+        "https://cache.nixos.org/"
+        # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      ];
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry

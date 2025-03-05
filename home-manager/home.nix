@@ -58,6 +58,7 @@ in
 
     # shell usage
     thefuck
+    starship
 
     # dev
     (python312.withPackages (python-pkgs: with python-pkgs; [
