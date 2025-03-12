@@ -46,6 +46,8 @@ in
     homeDirectory = "/home/edwardsu";
   };
 
+  programs.starship.settings = pkgs.lib.importTOML ./gruvbox-rainbow.toml;
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
