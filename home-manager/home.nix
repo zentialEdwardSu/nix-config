@@ -91,6 +91,8 @@ in
       credential.helper = "${
         pkgs.git.override { withLibsecret = true; }
       }/bin/git-credential-libsecret";
+      http.proxy = "http://127.0.0.1:7890";
+      https.proxy = "http://127.0.1:7890";
     };
   };
 
